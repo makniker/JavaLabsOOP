@@ -1,6 +1,6 @@
 package lab1;
 
-public interface Vehicle {
+public interface IVehicle {
     int ride(int time);
     String getName();
 }

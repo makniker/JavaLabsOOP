@@ -9,7 +9,7 @@ public class Strategy {
     {
         Road road = new Road(100);
         Hero hero = new Hero(road);
-        HashMap<String, Vehicle> vehicles = new HashMap<>();
+        HashMap<String, IVehicle> vehicles = new HashMap<>();
         vehicles.put("Foot", new Foot());
         vehicles.put("Cart", new Cart());
         vehicles.put("Horse", new Horse());
@@ -19,12 +19,13 @@ public class Strategy {
         Scanner in = new Scanner(System.in);
         while (!road.isComplete())
         {
-            System.out.println("Enter name of next vehicle and time: ");
+            System.out.println("Enter name of vehicle and time:\n");
             try{
                 name = in.next();
                 time = in.nextInt();
                 if (vehicles.containsKey(name) && time > 0) {
-                    hero.move(vehicles.get(name), time);
+                    hero.setVehicle(vehicles.get(name));
+                    hero.move(time);
                 }
                 else
                 {

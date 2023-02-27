@@ -1,6 +1,6 @@
 package lab1;
 
-public class Dragon implements Vehicle{
+public class Dragon implements IVehicle {
     private final int speed = 50;
     @Override
     public int ride(int time) {

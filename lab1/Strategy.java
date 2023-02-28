@@ -7,8 +7,7 @@ import java.util.Scanner;
 public class Strategy {
     public static void main(String[] args)
     {
-        Road road = new Road(100);
-        Hero hero = new Hero(road);
+        Hero hero = new Hero(100);
         HashMap<String, IVehicle> vehicles = new HashMap<>();
         vehicles.put("Foot", new Foot());
         vehicles.put("Cart", new Cart());
@@ -17,7 +16,7 @@ public class Strategy {
         String name;
         int time;
         Scanner in = new Scanner(System.in);
-        while (!road.isComplete())
+        while (!hero.isRoadComplete())
         {
             System.out.println("Enter name of vehicle and time:\n");
             try{

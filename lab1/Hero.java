@@ -1,19 +1,24 @@
 package lab1;
 
 public class Hero {
-    private static Road road;
-    private IVehicle IVehicle = new Foot();
-    Hero(Road road) {
-        Hero.road = road;
+    private final Road road;
+    private IVehicle vehicle;
+    Hero(int distance) {
+        this.road = new Road(distance);
+        this.vehicle = new Foot();
     }
 
     public void setVehicle(IVehicle IVehicle1) {
-        this.IVehicle = IVehicle1;
+        this.vehicle = IVehicle1;
+    }
+
+    public boolean isRoadComplete(){
+        return road.isComplete();
     }
 
     public void move(int time) {
-        road.moveForward(IVehicle.ride(time));
-        System.out.println("Hero moves on the " + IVehicle.getName() + " by " + time + " hours");
+        road.moveForward(vehicle.ride(time));
+        System.out.println("Hero moves on the " + vehicle.getName() + " by " + time + " hours");
         System.out.println(road.getDistanceLeft() + " km left");
     }
 }

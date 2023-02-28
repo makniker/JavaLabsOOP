@@ -12,7 +12,7 @@ public class Caller {
             int count = method.getAnnotation(MyAnnotation.class).numberOfCalls();
             System.out.println("Invoke " + method.getName() + " " + count + " times");
             for (int j = 0; j < count; j++) {
-                method.invoke(classWithAnnotation, j + 10, j + 15);
+                method.invoke(classWithAnnotation, j, j);
             }
         }
     }

@@ -1,4 +1,7 @@
 package lab3;
 
-public class Feline extends Predatory{
+public abstract class Feline extends Predatory{
+    public Feline(String name){
+        super(name);
+    }
 }

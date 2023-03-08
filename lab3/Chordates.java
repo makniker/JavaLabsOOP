@@ -1,4 +1,8 @@
 package lab3;
 
-public class Chordates {
+public abstract class Chordates {
+    private final String animalName;
+    public Chordates(String name) {
+        this.animalName = name;
+    }
 }

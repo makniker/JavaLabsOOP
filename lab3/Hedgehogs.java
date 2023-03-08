@@ -1,4 +1,7 @@
 package lab3;
 
-public class Hedgehogs extends Insectivores{
+public abstract class Hedgehogs extends Insectivores{
+    public Hedgehogs(String name){
+        super(name);
+    }
 }

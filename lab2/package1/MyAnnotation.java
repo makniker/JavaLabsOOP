@@ -1,4 +1,4 @@
-package lab2;
+package lab2.package1;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,4 +1,4 @@
-package lab2;
+package lab2.package1;
 
 public class ClassWithAnnotation {
     @MyAnnotation()

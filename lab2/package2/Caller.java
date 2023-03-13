@@ -20,34 +20,31 @@ public class Caller {
                 System.out.println("Invoke " + method.getName() + " " + count + " times");
                 Type[] typeArr = method.getParameterTypes();
                 Object[] obj = new Object[typeArr.length];
-                for (int i = 0; i < typeArr.length; i++) {
-                    if (typeArr[i].equals(int.class)) {
-                        obj[i] = ThreadLocalRandom.current().nextInt();
+                try {
+                    for (int i = 0; i < typeArr.length; i++) {
+                        if (typeArr[i].equals(int.class)) {
+                            obj[i] = ThreadLocalRandom.current().nextInt();
+                        } else if (typeArr[i].equals(double.class)) {
+                            obj[i] = ThreadLocalRandom.current().nextDouble();
+                        } else if (typeArr[i].equals(float.class)) {
+                            obj[i] = ThreadLocalRandom.current().nextFloat();
+                        } else if (typeArr[i].equals(boolean.class)) {
+                            obj[i] = ThreadLocalRandom.current().nextBoolean();
+                        } else if (typeArr[i].equals(byte.class)) {
+                            obj[i] = (byte) ThreadLocalRandom.current().nextInt();
+                        } else if (typeArr[i].equals(char.class)) {
+                            obj[i] = (char) ThreadLocalRandom.current().nextInt();
+                        } else if (typeArr[i].equals(String.class)) {
+                            obj[i] = "String";
+                        } else {
+                            break;
+                        }
                     }
-                    else if (typeArr[i].equals(double.class)) {
-                        obj[i] = ThreadLocalRandom.current().nextDouble();
+                    for (int j = 0; j < count; j++) {
+                        method.invoke(classWithAnnotation, obj);
                     }
-                    else if (typeArr[i].equals(float.class)) {
-                        obj[i] = ThreadLocalRandom.current().nextFloat();
-                    }
-                    else if (typeArr[i].equals(boolean.class)) {
-                        obj[i] = ThreadLocalRandom.current().nextBoolean();
-                    }
-                    else if (typeArr[i].equals(byte.class)) {
-                        obj[i] = (byte) ThreadLocalRandom.current().nextInt();
-                    }
-                    else if (typeArr[i].equals(char.class)) {
-                        obj[i] = (char) ThreadLocalRandom.current().nextInt();
-                    }
-                    else if (typeArr[i].equals(String.class)) {
-                        obj[i] = "String";
-                    }
-                    else {
-                        break;
-                    }
-                }
-                for (int j = 0; j < count; j++) {
-                    method.invoke(classWithAnnotation, obj);
+                } catch (NullPointerException e){
+                    System.out.println(e.getMessage());
                 }
                 method.setAccessible(false);
             }

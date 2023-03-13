@@ -6,7 +6,7 @@ public class Annotations {
         try {
             caller.call();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }

@@ -1,47 +1,42 @@
 package lab2.package1;
 
 public class ClassWithAnnotation {
-    @MyAnnotation()
-    public void publicMethod1(int a, int b) {
-        System.out.println("publicMethod1: " + a + " " + b);
+    @MyAnnotation
+    private void privateMethod(int a, double b, float c) {
+        System.out.println(a + " " + b + " " + c);
     }
-
     @MyAnnotation(numberOfCalls = 3)
-    public void publicMethod2(int a, int b) {
-        System.out.println("publicMethod2: " + a + " " + b);
+    private void privateMethod(int a, float b, char c) {
+        System.out.println(a + " " + b + " " + c);
     }
-
-    @MyAnnotation(numberOfCalls = 6)
-    public void publicMethod3(int a, int b) {
-        System.out.println("publicMethod3: " + a + " " + b);
+    @MyAnnotation(numberOfCalls = 1)
+    private void privateMethod(String a, String b, String c) {
+        System.out.println(a + " " + b + " " + c);
     }
 
     @MyAnnotation
-    private void privateMethod1(int a, int b) {
-        System.out.println("privateMethod1: " + a + " " + b);
+    protected void protectedMethod(int a, double b, float c) {
+        System.out.println(a + " " + b + " " + c);
     }
     @MyAnnotation(numberOfCalls = 3)
-    private void privateMethod2(int a, int b) {
-        System.out.println("privateMethod2: " + a + " " + b);
+    protected void protectedMethod(int a, float b, char c) {
+        System.out.println(a + " " + b + " " + c);
+    }
+    @MyAnnotation(numberOfCalls = 1)
+    protected void protectedMethod(String a, String b, String c) {
+        System.out.println(a + " " + b + " " + c);
     }
 
-    @MyAnnotation()
-    private void privateMethod3(int a, int b) {
-        System.out.println("privateMethod3: " + a + " " + b);
+    @MyAnnotation
+    public void publicMethod(int a, double b, float c) {
+        System.out.println(a + " " + b + " " + c);
     }
-
     @MyAnnotation(numberOfCalls = 3)
-    protected void protectedMethod1(int a, int b){
-        System.out.println("protectedMethod1: " + a + " " + b);
+    public void publicMethod(int a, float b, char c) {
+        System.out.println(a + " " + b + " " + c);
     }
-
-    @MyAnnotation(numberOfCalls = 3)
-    protected void protectedMethod2(int a, int b){
-        System.out.println("protectedMethod2: " + a + " " + b);
-    }
-
-    @MyAnnotation(numberOfCalls = 2)
-    protected void protectedMethod3(int a, int b){
-        System.out.println("protectedMethod3: " + a + " " + b);
+    @MyAnnotation(numberOfCalls = 1)
+    public void publicMethod(String a, String b, String c) {
+        System.out.println(a + " " + b + " " + c);
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Animals {
     public static void main(String[] args) {
-        ArrayList<Chordates> SrcCollection1 = new ArrayList<>(9);
+        ArrayList<Mammals> SrcCollection1 = new ArrayList<>(9);
         SrcCollection1.add(new Manul("manul1"));
         SrcCollection1.add(new Manul("manul2"));
         SrcCollection1.add(new Manul("manul3"));

@@ -1,7 +1,6 @@
 package lab1;
 
 import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Strategy {
@@ -19,8 +18,8 @@ public class Strategy {
         while (!hero.isRoadComplete())
         {
             System.out.println("Enter name of vehicle and time:\n");
-            try{
-                name = in.next();
+            name = in.next();
+            if (in.hasNextInt()) {
                 time = in.nextInt();
                 if (vehicles.containsKey(name) && time > 0) {
                     hero.setVehicle(vehicles.get(name));
@@ -31,10 +30,11 @@ public class Strategy {
                     System.out.println("bad data!");
                 }
             }
-            catch (InputMismatchException e) {
-                System.out.println("time must be int");
+            else {
+                System.out.println("Time must be int");
             }
         }
+        in.close();
         System.out.println("Hero finished his road!");
     }
 }

@@ -20,6 +20,7 @@ public class Caller {
                 System.out.println("Invoke " + method.getName() + " " + count + " times");
                 Type[] typeArr = method.getParameterTypes();
                 Object[] obj = new Object[typeArr.length];
+                boolean isDefaultType = true;
                 try {
                     for (int i = 0; i < typeArr.length; i++) {
                         if (typeArr[i].equals(int.class)) {
@@ -37,8 +38,12 @@ public class Caller {
                         } else if (typeArr[i].equals(String.class)) {
                             obj[i] = "String";
                         } else {
-                            break;
+                            isDefaultType = false;
                         }
+                    }
+                    if (!isDefaultType){
+                        System.out.println("Not default time parametrs!");
+                        continue;
                     }
                     for (int j = 0; j < count; j++) {
                         method.invoke(classWithAnnotation, obj);

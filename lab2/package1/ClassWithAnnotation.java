@@ -15,7 +15,6 @@ public class ClassWithAnnotation {
     private void privateMethod(String a, String b, String c) {
         System.out.println(a + " " + b + " " + c);
     }
-
     @MyAnnotation(numberOfCalls = 1)
     private void privateMethod(String a, Caller b, String c) {
         System.out.println(a + " " + b + " " + c);
@@ -32,7 +31,6 @@ public class ClassWithAnnotation {
     protected void protectedMethod(String a, String b, String c) {
         System.out.println(a + " " + b + " " + c);
     }
-
     @MyAnnotation
     public void publicMethod(int a, double b, float c) {
         System.out.println(a + " " + b + " " + c);

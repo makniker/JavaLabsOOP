@@ -11,16 +11,21 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Caller {
     public ClassWithAnnotation classWithAnnotation = new ClassWithAnnotation();
 
-    public void callMethodsWitAnnotation() throws InvocationTargetException, IllegalAccessException {
+    public void callMethodsWitAnnotation() throws InvocationTargetException, IllegalAccessException, InstantiationException, NoSuchMethodException, ClassNotFoundException {
         Method[] methods = classWithAnnotation.getClass().getDeclaredMethods();
         for (Method method : methods) {
-            if (!method.canAccess(classWithAnnotation) || method.isAnnotationPresent(MyAnnotation.class)) {
+            if (!method.canAccess(classWithAnnotation) && method.isAnnotationPresent(MyAnnotation.class)) {
                 method.setAccessible(true);
                 int count = method.getAnnotation(MyAnnotation.class).numberOfCalls();
                 System.out.println("Invoke " + method.getName() + " " + count + " times");
                 Type[] typeArr = method.getParameterTypes();
+                if (typeArr.length == 0) {
+                    for (int j = 0; j < count; j++) {
+                        method.invoke(classWithAnnotation);
+                    }
+                    continue;
+                }
                 Object[] obj = new Object[typeArr.length];
-                boolean isDefaultType = true;
                     for (int i = 0; i < typeArr.length; i++) {
                         if (typeArr[i].equals(int.class)) {
                             obj[i] = ThreadLocalRandom.current().nextInt();
@@ -37,13 +42,8 @@ public class Caller {
                         } else if (typeArr[i].equals(String.class)) {
                             obj[i] = "String";
                         } else {
-                            isDefaultType = false;
+                            obj[i] = Class.forName(typeArr[i].getTypeName()).getConstructor().newInstance();
                         }
-                    }
-                    if (!isDefaultType){
-                        System.out.println("Not default parametrs!");
-                        method.setAccessible(false);
-                        continue;
                     }
                     for (int j = 0; j < count; j++) {
                         method.invoke(classWithAnnotation, obj);

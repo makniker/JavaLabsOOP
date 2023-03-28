@@ -12,6 +12,8 @@ public class Annotations {
         }
         catch (IllegalAccessException e2) {
             System.out.println("IllegalAccess, cant get method");
+        } catch (Exception e) {
+            System.out.println("aaaa");
         }
     }
 }

@@ -34,7 +34,7 @@ public class Caller {
                         } else if (typeArr[i].equals(byte.class)) {
                             obj[i] = (byte) ThreadLocalRandom.current().nextInt();
                         } else if (typeArr[i].equals(char.class)) {
-                            obj[i] = (char) ThreadLocalRandom.current().nextInt();
+                            obj[i] = (char) ThreadLocalRandom.current().nextInt(Character.MIN_VALUE, Character.MAX_VALUE);
                         } else if (typeArr[i].equals(String.class)) {
                             obj[i] = "String";
                         } else {
@@ -43,6 +43,7 @@ public class Caller {
                     }
                     if (!isDefaultType){
                         System.out.println("Not default parametrs!");
+                        method.setAccessible(false);
                         continue;
                     }
                     for (int j = 0; j < count; j++) {

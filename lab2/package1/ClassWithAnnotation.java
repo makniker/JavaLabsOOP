@@ -18,6 +18,7 @@ public class ClassWithAnnotation {
     @MyAnnotation(numberOfCalls = 1)
     private void privateMethod(String a, CustomClass b, String c) {
         System.out.println(a + " " + " " + c);
+        System.out.println("Custom class!");
     }
     @MyAnnotation
     protected void protectedMethod(int a, double b, float c) {

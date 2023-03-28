@@ -11,17 +11,16 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Caller {
     public ClassWithAnnotation classWithAnnotation = new ClassWithAnnotation();
 
-    public void call() throws InvocationTargetException, IllegalAccessException {
+    public void callMethodsWitAnnotation() throws InvocationTargetException, IllegalAccessException {
         Method[] methods = classWithAnnotation.getClass().getDeclaredMethods();
         for (Method method : methods) {
-            if (!method.canAccess(classWithAnnotation)) {
+            if (!method.canAccess(classWithAnnotation) || method.isAnnotationPresent(MyAnnotation.class)) {
                 method.setAccessible(true);
                 int count = method.getAnnotation(MyAnnotation.class).numberOfCalls();
                 System.out.println("Invoke " + method.getName() + " " + count + " times");
                 Type[] typeArr = method.getParameterTypes();
                 Object[] obj = new Object[typeArr.length];
                 boolean isDefaultType = true;
-                try {
                     for (int i = 0; i < typeArr.length; i++) {
                         if (typeArr[i].equals(int.class)) {
                             obj[i] = ThreadLocalRandom.current().nextInt();
@@ -49,9 +48,6 @@ public class Caller {
                     for (int j = 0; j < count; j++) {
                         method.invoke(classWithAnnotation, obj);
                     }
-                } catch (NullPointerException e){
-                    System.out.println(e.getMessage());
-                }
                 method.setAccessible(false);
             }
         }

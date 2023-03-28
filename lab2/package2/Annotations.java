@@ -6,7 +6,7 @@ public class Annotations {
     public static void main(String[] args){
         Caller caller = new Caller();
         try {
-            caller.call();
+            caller.callMethodsWitAnnotation();
         } catch (InvocationTargetException e1) {
             System.out.println("Invoke exception");
         }

@@ -42,7 +42,7 @@ public class Caller {
                         }
                     }
                     if (!isDefaultType){
-                        System.out.println("Not default time parametrs!");
+                        System.out.println("Not default parametrs!");
                         continue;
                     }
                     for (int j = 0; j < count; j++) {

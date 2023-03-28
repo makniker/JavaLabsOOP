@@ -20,7 +20,6 @@ public class ClassWithAnnotation {
     private void privateMethod(String a, Caller b, String c) {
         System.out.println(a + " " + b + " " + c);
     }
-
     @MyAnnotation
     protected void protectedMethod(int a, double b, float c) {
         System.out.println(a + " " + b + " " + c);

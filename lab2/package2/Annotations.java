@@ -9,11 +9,14 @@ public class Annotations {
             caller.callMethodsWitAnnotation();
         } catch (InvocationTargetException e1) {
             System.out.println("Invoke exception");
-        }
-        catch (IllegalAccessException e2) {
+        } catch (IllegalAccessException e2) {
             System.out.println("IllegalAccess, cant get method");
-        } catch (Exception e) {
-            System.out.println("aaaa");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
         }
     }
 }

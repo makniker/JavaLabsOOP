@@ -1,6 +1,7 @@
 package lab2.package1;
 
-import lab2.package2.CustomClass;
+import lab2.package2.CustomClass1;
+import lab2.package2.CustomClass2;
 
 public class ClassWithAnnotation {
     @MyAnnotation
@@ -16,9 +17,14 @@ public class ClassWithAnnotation {
         System.out.println(a + " " + b + " " + c);
     }
     @MyAnnotation(numberOfCalls = 1)
-    private void privateMethod(String a, CustomClass b, String c) {
+    private void privateMethod(String a, CustomClass1 b, String c) {
         System.out.println(a + " " + " " + c);
         System.out.println("Custom class!");
+    }
+    @MyAnnotation(numberOfCalls = 1)
+    private void privateMethod(String a, CustomClass2 b, String c) {
+        System.out.println(a + " " + " " + c);
+        System.out.println("Custom class2!");
     }
     @MyAnnotation
     protected void protectedMethod(int a, double b, float c) {

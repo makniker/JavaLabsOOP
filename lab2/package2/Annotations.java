@@ -11,12 +11,13 @@ public class Annotations {
             System.out.println("Invoke exception");
         } catch (IllegalAccessException e2) {
             System.out.println("IllegalAccess, cant get method");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e3) {
+            System.out.println("cant found class");
+            System.out.println(e3.getMessage());
+        } catch (InstantiationException e4) {
+            System.out.println("cant instantiation class");
+        } catch (NoSuchMethodException e5) {
+            System.out.println("cant found method");
         }
     }
 }

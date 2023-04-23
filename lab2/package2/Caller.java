@@ -10,7 +10,7 @@ import java.lang.reflect.Type;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Caller {
-    final public ClassWithAnnotation classWithAnnotation = new ClassWithAnnotation();
+    final private ClassWithAnnotation classWithAnnotation = new ClassWithAnnotation();
 
     public void callMethodsWitAnnotation() throws InvocationTargetException, IllegalAccessException, InstantiationException, NoSuchMethodException, ClassNotFoundException {
         Method[] methods = classWithAnnotation.getClass().getDeclaredMethods();
@@ -48,9 +48,13 @@ public class Caller {
         } else if (type.equals(boolean.class)) {
             return ThreadLocalRandom.current().nextBoolean();
         } else if (type.equals(byte.class)) {
-            return (byte) ThreadLocalRandom.current().nextInt();
+            return (byte) 1;
+        } else if (type.equals(short.class)) {
+            return (short) 1;
+        } else if (type.equals(long.class)) {
+            return ThreadLocalRandom.current().nextLong();
         } else if (type.equals(char.class)) {
-            return (char) ThreadLocalRandom.current().nextInt(Character.MIN_VALUE, Character.MAX_VALUE);
+            return 'c';
         } else if (type.equals(String.class)) {
             return "String";
         }

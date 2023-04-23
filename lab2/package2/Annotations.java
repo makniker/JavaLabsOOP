@@ -13,7 +13,6 @@ public class Annotations {
             System.out.println("IllegalAccess, cant get method");
         } catch (ClassNotFoundException e3) {
             System.out.println("cant found class");
-            System.out.println(e3.getMessage());
         } catch (InstantiationException e4) {
             System.out.println("cant instantiation class");
         } catch (NoSuchMethodException e5) {

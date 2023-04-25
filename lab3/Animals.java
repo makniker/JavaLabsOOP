@@ -1,10 +1,10 @@
 package lab3;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Animals {
     public static void main(String[] args) {
-        ArrayList<Mammals> srcCollection1 = new ArrayList<>(9);
+        LinkedList<Mammals> srcCollection1 = new LinkedList<>();
         srcCollection1.add(new Manul("manul1"));
         srcCollection1.add(new Manul("manul2"));
         srcCollection1.add(new Manul("manul3"));
@@ -15,9 +15,9 @@ public class Animals {
         srcCollection1.add(new EuropeanHedgehog("hedgehog2"));
         srcCollection1.add(new EuropeanHedgehog("hedgehog3"));
 
-        ArrayList<Hedgehogs> collectionOfHedgehogs = new ArrayList<>(3);
-        ArrayList<Feline> collectionOfFeline = new ArrayList<>(3);
-        ArrayList<Predatory> collectionOfPredators = new ArrayList<>(3);
+        LinkedList<Hedgehogs> collectionOfHedgehogs = new LinkedList<>();
+        LinkedList<Feline> collectionOfFeline = new LinkedList<>();
+        LinkedList<Predatory> collectionOfPredators = new LinkedList<>();
 
         segregate(srcCollection1, collectionOfHedgehogs, collectionOfFeline, collectionOfPredators);
 
@@ -26,7 +26,7 @@ public class Animals {
         System.out.println(collectionOfHedgehogs);
         System.out.println(collectionOfPredators);
 
-        ArrayList<Predatory> srcCollection2 = new ArrayList<>(9);
+        LinkedList<Predatory> srcCollection2 = new LinkedList<>();
         srcCollection2.add(new Manul("manul1"));
         srcCollection2.add(new Manul("manul2"));
         srcCollection2.add(new Manul("manul3"));
@@ -34,9 +34,9 @@ public class Animals {
         srcCollection2.add(new Lynx("lynx2"));
         srcCollection2.add(new Lynx("lynx3"));
 
-        ArrayList<Chordates> collectionOfChordates = new ArrayList<>(3);
-        ArrayList<Manul> collectionOfManuls = new ArrayList<>(3);
-        ArrayList<Feline> collectionOfFeline2 = new ArrayList<>(3);
+        LinkedList<Chordates> collectionOfChordates = new LinkedList<>();
+        LinkedList<Manul> collectionOfManuls = new LinkedList<>();
+        LinkedList<Feline> collectionOfFeline2 = new LinkedList<>();
         segregate(srcCollection2, collectionOfChordates, collectionOfManuls, collectionOfFeline2);
 
         System.out.println(srcCollection2);
@@ -44,14 +44,14 @@ public class Animals {
         System.out.println(collectionOfManuls);
         System.out.println(collectionOfFeline2);
 
-        ArrayList<Hedgehogs> srcCollection3 = new ArrayList<>(9);
+        LinkedList<Hedgehogs> srcCollection3 = new LinkedList<>();
         srcCollection3.add(new EuropeanHedgehog("hedgehog1"));
         srcCollection3.add(new EuropeanHedgehog("hedgehog2"));
         srcCollection3.add(new EuropeanHedgehog("hedgehog3"));
 
-        ArrayList<Insectivores> collectionOfInsectivores = new ArrayList<>(3);
-        ArrayList<Feline> collectionOfFeline3 = new ArrayList<>(3);
-        ArrayList<Feline> collectionOfFeline4 = new ArrayList<>(3);
+        LinkedList<Insectivores> collectionOfInsectivores = new LinkedList<>();
+        LinkedList<Feline> collectionOfFeline3 = new LinkedList<>();
+        LinkedList<Feline> collectionOfFeline4 = new LinkedList<>();
         segregate(srcCollection2, collectionOfInsectivores, collectionOfFeline3, collectionOfFeline4);
 
         System.out.println(srcCollection3);
@@ -60,20 +60,20 @@ public class Animals {
         System.out.println(collectionOfFeline2);
     }
 
-    public static void segregate(ArrayList<? extends Chordates> SrcCollection,
-                     ArrayList<? super EuropeanHedgehog >Collection1,
-                     ArrayList<? super Manul > Collection2,
-                     ArrayList<? super Lynx >Collection3)
+    public static void segregate(LinkedList<? extends Chordates> srcCollection,
+                     LinkedList<? super EuropeanHedgehog >collection1,
+                     LinkedList<? super Manul > collection2,
+                     LinkedList<? super Lynx >collection3)
     {
-       for(Chordates animal: SrcCollection){
+       for(Chordates animal: srcCollection){
            if(animal instanceof EuropeanHedgehog){
-               Collection1.add((EuropeanHedgehog) animal);
+               collection1.add((EuropeanHedgehog) animal);
            }
            if(animal instanceof Manul){
-               Collection2.add((Manul) animal);
+               collection2.add((Manul) animal);
            }
            if(animal instanceof Lynx){
-               Collection3.add((Lynx) animal);
+               collection3.add((Lynx) animal);
            }
        }
     }

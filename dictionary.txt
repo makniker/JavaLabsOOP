@@ -4,3 +4,6 @@ she | она
 is | есть
 am | есть
 boss | босс
+bosses | боссы
+they | они
+are | есть

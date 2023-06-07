@@ -11,6 +11,7 @@ public class Translator {
         String[] words = text.split("\\ ");
         StringBuilder returnText = new StringBuilder();
         for(String word : words) {
+            word = word.toLowerCase();
             returnText.append(dictionary.getTranslate(word.toLowerCase())).append(' ');
         }
         return returnText.toString();

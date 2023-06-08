@@ -1,22 +1,22 @@
 package lab6;
 
 public class Supervisor implements Runnable{
-    private final AbstractProgram abstractProgram;
+    private final AbstractProgram program;
     private final Thread executableThread;
     Supervisor(AbstractProgram program) {
-        this.abstractProgram = program;
-        executableThread = new Thread(abstractProgram);
+        this.program = program;
+        executableThread = new Thread(this.program);
     }
 
     @Override
     public void run() {
         executableThread.start();
-        synchronized (abstractProgram) {
+        synchronized (program) {
             while (!Thread.interrupted() || executableThread.isInterrupted()) {
                 try {
-                    abstractProgram.wait();
-                    responseToStateChange(abstractProgram.getState());
-                    abstractProgram.notify();
+                    program.wait();
+                    responseToStateChange(program.getState());
+                    program.notify();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                     System.out.println("Supervisor: FATAL ERROR -> abstract program finished performance");
@@ -38,6 +38,6 @@ public class Supervisor implements Runnable{
     }
 
     public void restartProgram() {
-        System.out.println("Supervisor: Due to the state STOPPING -> restart program.");
+        System.out.println("Supervisor: STOPPING -> restart program.");
     }
 }

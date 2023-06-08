@@ -10,9 +10,9 @@ public class AbstractProgram implements Runnable{
         Thread daemon = new Thread(() -> {
             while (true) {
                 synchronized (this) {
-                    this.notify();
+                    notify();
                     try {
-                        this.wait();
+                        wait();
                         int randomState = ThreadLocalRandom.current().nextInt(1, 4);
                         state = ProgramState.values()[randomState];
                         System.out.println("Change state to: " + state);

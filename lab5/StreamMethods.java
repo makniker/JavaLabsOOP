@@ -28,7 +28,8 @@ public class StreamMethods {
                 .entrySet()
                 .stream()
                 .filter(e -> e.getValue() == 1)
-                .map(val -> val.getKey() * val.getKey()).toList();
+                .map(val -> val.getKey() * val.getKey())
+                .toList();
     }
 
     public static List<String> getStringStartsWith(Collection<String> collection, char letter) {

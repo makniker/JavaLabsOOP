@@ -8,7 +8,7 @@ public class Main {
     private static final List<String> list2 = new ArrayList<>(5);
     private static final int[] arr1 = {1, 2, 3, 4, 5};
     private static final int[] arr2 = {1, 3, 5};
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         list1.add(5);
         list1.add(5);
         list1.add(5);
@@ -31,7 +31,11 @@ public class Main {
 
         System.out.println(StreamMethods.getStringStartsWith(list2, 's'));
 
-        System.out.println(StreamMethods.getLastElement(list1));
+        try {
+            System.out.println(StreamMethods.getLastElement(list1));
+        } catch (Exception e) {
+            System.out.println("failed!");
+        }
 
         System.out.println(StreamMethods.getEvenSum(arr1));
         System.out.println(StreamMethods.getEvenSum(arr2));

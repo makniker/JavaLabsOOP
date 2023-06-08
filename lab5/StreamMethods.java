@@ -9,15 +9,22 @@ import java.util.stream.Collectors;
 
 public class StreamMethods {
     public static double averageValue(List<Integer> list) {
-        return list.stream().mapToInt(Integer::intValue).average().orElse(0.0);
+        return list.stream()
+                .mapToInt(Integer::intValue)
+                .average()
+                .orElse(0.0);
     }
 
     public static List<String> toUpperCase(List<String> list) {
-        return list.stream().map(String::toUpperCase).map(string -> "_new_" + string).toList();
+        return list.stream()
+                .map(String::toUpperCase)
+                .map(string -> "_new_" + string)
+                .toList();
     }
 
     public static List<Integer> getListOfSquares(List<Integer> list) {
-        return list.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+        return list.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet()
                 .stream()
                 .filter(e -> e.getValue() == 1)
@@ -47,6 +54,5 @@ public class StreamMethods {
         return list.stream()
                 .filter(str -> !str.isEmpty())
                 .collect(Collectors.toMap(k -> k.charAt(0), v -> v.substring(1)));
-
     }
 }

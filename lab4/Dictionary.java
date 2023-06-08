@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Dictionary {
     private final Map< String, String > mapOfWords = new HashMap<>();
-    private final String[] punctuationArray = {".", ","};
+    private final String[] punctuationArray = {".", ",", "!"};
 
     public Dictionary(File file) throws InvalidFileFormatException, FileReadException {
         readFile(file);

@@ -28,7 +28,6 @@ public class Dictionary {
                 mapOfWords.put(words[0].trim().toLowerCase(), words[1].trim().toLowerCase());
             }
             if (mapOfWords.isEmpty() || !isWordsGood) {
-                scanner.close();
                 throw new InvalidFileFormatException();
             }
         } catch (FileNotFoundException e) {

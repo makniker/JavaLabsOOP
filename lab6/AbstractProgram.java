@@ -35,7 +35,7 @@ public class AbstractProgram implements Runnable{
     }
 
     public void doSmth() {
-
+        int i = 1 + 1;
     }
 
 }

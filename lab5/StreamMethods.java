@@ -41,8 +41,8 @@ public class StreamMethods {
 
     public static <T> T getLastElement(Collection<T> collection) throws Exception {
         return collection.stream()
-                .reduce((first, second) -> second)
-                .orElseThrow(Exception::new);
+                        .reduce((first, second) -> second)
+                        .orElseThrow(() -> new Exception("my exception with original text"));
     }
 
     public static int getEvenSum(int[] list) {
